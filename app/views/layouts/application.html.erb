@@ -9,6 +9,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <!-- 用container-fluid风格装饰题头和主体 -->
+    <div class="container-fluid">
+      <%= render "common/narbar" %>
+      <%= yield %>
+    </div>
+    <!-- 不用container-fluid风格装饰地脚，什么也不用 -->
+    <%= render "common/narbar" %>
+
   </body>
 </html>

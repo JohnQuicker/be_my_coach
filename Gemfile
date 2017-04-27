@@ -38,6 +38,9 @@ gem 'jbuilder', '~> 2.5'
 ## CSS框架(元件素材多), John@2017.04.27
 gem 'bootstrap-sass'
 
+## 会员系统，John@2017.04.27
+gem 'devise'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

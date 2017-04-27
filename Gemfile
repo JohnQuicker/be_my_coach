@@ -41,6 +41,9 @@ gem 'bootstrap-sass'
 ## 会员系统，John@2017.04.27
 gem 'devise'
 
+## 表单工具，里面有什么不知道，本项目哪个元素调用了它，不知道。John@2017.04.27
+gem 'simple_form'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -1,0 +1,21 @@
+<div class="pull-right">
+  <%= link_to("加入一项任务", new_task_path, :class => "btn btn-default")%>
+</div>
+
+<table class="table table-bordered">
+  <% @tasks.each do |task| %>
+  <tr>
+    <td>
+      <%= link_to(task.title, task_path(task)) %>
+    </td>
+    <td>
+      <%= link_to("编辑", edit_task_path(task)) %>
+      |
+      <%= link_to("删除", task_path(task), :method => :delete, :data => {:confirm => "你确定吗？"}) %>
+    </td>
+    <td>
+      <%= task.created_at %>
+    </td>
+  </tr>
+  <% end %>
+</table>

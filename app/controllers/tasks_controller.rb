@@ -18,7 +18,7 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to tasks_path
+      redirect_to admin_tasks_path
     else
       render :new
     end
@@ -31,7 +31,7 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to tasks_path
+      redirect_to admin_tasks_path
     else
       render :edit
     end
@@ -40,7 +40,7 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to tasks_path
+    redirect_to admin_tasks_path
   end
 
   private

@@ -46,6 +46,6 @@ class Admin::TasksController < ApplicationController
     private
 
     def task_params
-      params.require(:task).permit(:title, :description)
+      params.require(:task).permit(:title, :description, :hope_dead_line, :commit_wage, :contact_email, )
     end
 end

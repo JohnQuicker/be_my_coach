@@ -43,13 +43,6 @@ class Admin::TasksController < ApplicationController
       redirect_to tasks_path
     end
 
-    def require_is_admin
-        if !current_user.admin?
-          flash[:alert] = 'You are not admin'
-          redirect_to root_path
-        end
-    end
-    
     private
 
     def task_params

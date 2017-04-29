@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, ]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.where(:is_hidden => false)
   end
 
   def show
@@ -46,6 +46,6 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :hope_dead_line, :commit_wage, :contact_email, )
+    params.require(:task).permit(:title, :description, :hope_dead_line, :commit_wage, :contact_email, :is_hidden, )
   end
 end

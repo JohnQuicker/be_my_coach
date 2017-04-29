@@ -6,6 +6,7 @@
   <% @tasks.each do |task| %>
   <tr>
     <td>
+      <%= render_task_status(task) %>
       <%= link_to(task.title, task_path(task)) %>
     </td>
     <td>

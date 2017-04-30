@@ -2,8 +2,19 @@ class TasksController < ApplicationController
 
 before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, ]
 
+  # def index
+  #   @tasks = Task.where(:is_hidden => false)
+  # end
+  # 
   def index
-    @tasks = Task.where(:is_hidden => false)
+    @tasks = case params[:order]
+      when 'by_hope_dead_line'
+        Task.where(is_hidden: false).order('hope_dead_line DESC')
+      when 'by_commit_wage'
+        Task.where(is_hidden: false).order('commit_wage DESC')
+      else
+        Task.where(is_hidden: false).order('created_at DESC')
+    end
   end
 
   def show

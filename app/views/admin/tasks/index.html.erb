@@ -1,27 +1,73 @@
+<div class="dropdown clearfix pull-right">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    排序
+      <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+    <li>
+      <%= link_to("按照完成时限排序", admin_tasks_path(:order => "by_hope_dead_line"))%>
+    </li>
+    <li>
+      <%= link_to("按照承诺分成排序", admin_tasks_path(:order => "by_commit_wage"))%>
+    </li>
+    <li>
+      <%= link_to("按照发表时间排序", admin_tasks_path) %>
+    </li>
+  </ul>
+</div>
 <div class="pull-right">
   <%= link_to("加入一项任务", new_task_path, :class => "btn btn-default")%>
 </div>
 
 <table class="table table-bordered">
-  <% @tasks.each do |task| %>
-  <tr>
-    <td>
-      <%= render_task_status(task) %>
-      <%= link_to(task.title, task_path(task)) %>
-    </td>
-    <td>
-      <%= link_to("编辑", edit_task_path(task)) %>
-      |
-      <%= link_to("删除", task_path(task), :method => :delete, :data => {:confirm => "你确定吗？"}) %>
-      <% if task.is_hidden %>
-        <%= link_to("公开", publish_admin_task_path(task) , :method => :post, :class => "btn btn-xs btn-default") %>
-       <% else %>
-         <%= link_to("保留", hide_admin_task_path(task), :method => :post,  :class => "btn btn-xs btn-default") %>
-       <% end %>
-    </td>
-    <td>
-      <%= task.created_at %>
-    </td>
-  </tr>
-  <% end %>
+  <thead>
+    <tr>
+      <td>课题名称</td>
+      <td>管理功能</td>
+      <td>收到关注</td>
+      <td>课题内容</td>
+      <td>期望时限(天)</td>
+      <td>报答礼金(RMB)</td>
+      <td>联系方式</td>
+      <td>发表时间</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+    <tr>
+      <td>
+        <%= render_task_status(task) %>
+        <%= link_to(task.title, task_path(task)) %>
+      </td>
+      <td>
+        <%= link_to("编辑", edit_task_path(task)) %>
+        |
+        <%= link_to("删除", task_path(task), :method => :delete, :data => {:confirm => "你确定吗？"}) %>
+        <% if task.is_hidden %>
+          <%= link_to("公开", publish_admin_task_path(task) , :method => :post, :class => "btn btn-xs btn-default") %>
+         <% else %>
+           <%= link_to("保留", hide_admin_task_path(task), :method => :post,  :class => "btn btn-xs btn-default") %>
+         <% end %>
+      </td>
+      <td>
+        <%= link_to(task.resumes.count, admin_task_resumes_path(task)) %>
+      </td>
+      <td>
+        <%= task.description %>
+      </td>
+      <td>
+        <%= task.hope_dead_line %>
+      </td>
+      <td>
+        <%= task.commit_wage %>
+      </td>
+      <td>
+        <%= task.contact_email %>
+      </td>
+      <td>
+        <%= task.created_at %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>

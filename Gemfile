@@ -47,6 +47,9 @@ gem 'simple_form'
 ## 各种简介精美的小图标
 gem 'font-awesome-rails'
 
+## 上传简历功能
+gem 'carrierwave'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

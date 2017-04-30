@@ -3,3 +3,8 @@
 <p>
 <%= simple_format(@task.description)  %>
 </p>
+
+
+<div class="text-center">
+  <%= link_to("伸出援手", new_task_resume_path(@task), :style => "font-size: 30px; text-decoration: underline;")  %>
+</div>

@@ -1,0 +1,9 @@
+<h3> 提交援助邀约给 <%= @task.title %> </h3>
+
+<hr>
+
+<%= simple_form_for [@task, @resume] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :attachment %>
+  <%= f.submit "送 出" %>
+<% end %>

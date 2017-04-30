@@ -8,6 +8,10 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
 
   def show
     @task = Task.find(params[:id])
+    if @task.is_hidden
+      flash[:warning] = "您想从后门进来？瞬间移动回大门前！"
+      redirect_to root_path
+    end
   end
 
   def new

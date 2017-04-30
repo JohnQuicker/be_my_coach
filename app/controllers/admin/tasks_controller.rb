@@ -1,6 +1,7 @@
 class Admin::TasksController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, ]
   before_action :require_is_admin
+  layout "admin"
 
     def index
       @tasks = Task.all
@@ -42,6 +43,21 @@ class Admin::TasksController < ApplicationController
       @task.destroy
       redirect_to tasks_path
     end
+
+    def publish
+      @task = Task.find(params[:id])
+      @task.is_hidden = false
+      @task.save
+      redirect_to :back
+    end
+
+    def hide
+      @task = Task.find(params[:id])
+      @task.is_hidden = true
+      @task.save
+      redirect_to :back
+    end
+
 
     private
 

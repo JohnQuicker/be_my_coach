@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :tasks
   root 'tasks#index'
   namespace :admin do
-    resources :tasks
+    resources :tasks do
+      member do
+        post :publish
+        post :hide
+      end
+    end
   end
 end

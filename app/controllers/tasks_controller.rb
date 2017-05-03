@@ -31,6 +31,7 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
 
   def create
     @task = Task.new(task_params)
+    @task.user = current_user #这句最关键了！
     if @task.save
       current_user.join!(@task)
       redirect_to tasks_path

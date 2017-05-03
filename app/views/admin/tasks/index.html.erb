@@ -54,7 +54,7 @@
                  <% end %>
             </td>
             <td>
-              <%= link_to(task.members.count, admin_task_resumes_path(task)) %>
+              <%= link_to(task.concerned_members.count, admin_task_resumes_path(task)) %>
             </td>
             <td>
               <%= link_to(task.resumes.count, admin_task_resumes_path(task)) %>

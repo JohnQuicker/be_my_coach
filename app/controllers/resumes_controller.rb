@@ -9,6 +9,8 @@ class ResumesController < ApplicationController
     @resume.task = @task
     @resume.user = current_user
     if @resume.save
+      current_user.join!(@task)
+      current_user.resumed!(@task)
       flash[:notice] = "成功提交援助邀约"
       redirect_to task_path(@task)
     else

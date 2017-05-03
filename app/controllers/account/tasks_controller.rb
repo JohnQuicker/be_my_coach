@@ -19,7 +19,8 @@ class Account::TasksController < ApplicationController
       def create
         @task = Task.new(task_params)
         if @task.save
-          redirect_to tasks_path
+          current_user.join!(@task)
+          redirect_to admin_tasks_path
         else
           render :new
         end
@@ -30,7 +31,7 @@ class Account::TasksController < ApplicationController
       def update
         @task = Task.find(params[:id])
         if @task.update(task_params)
-          redirect_to tasks_path
+          redirect_to account_tasks_path
         else
           render :edit
         end

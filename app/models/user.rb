@@ -15,10 +15,16 @@ class User < ApplicationRecord
  def be_concerned_about?(task)
    participated_tasks.include?(task)
  end
+ def have_resumed_for?(task)
+   resumed_tasks.include?(task)
+ end
  def join!(task)
    participated_tasks << task
  end
  def quit!(task)
    participated_tasks.delete(task)
+ end
+ def resumed!(task)
+   resumed_tasks << task
  end
 end

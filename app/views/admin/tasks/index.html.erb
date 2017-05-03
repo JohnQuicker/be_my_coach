@@ -42,8 +42,21 @@
             <td>
               <%= render_task_status(task) %>
               <%= link_to(task.title, task_path(task)) %>
+              <span class = "pull-right" style="margin: 2px 4px 0px 4px;">
+              <% if current_user && current_user.be_concerned_about?(task) %>
+                <label class = "label label-success" style="padding-bottom: 5px;"> 已经关注 </label>
+              <% else %>
+                <label class = "label label-warning"> 未关注它 </label>
+              <% end %>
+              <% if current_user && current_user.have_resumed_for?(task) %>
+                <label class = "label label-success" style="padding-bottom: 5px;"> 联系过了 </label>
+              <% else %>
+                <label class = "label label-warning"> 未尝联系 </label>
+              <% end %>
+              </span>
             </td>
             <td>
+              <% if current_user && current_user==task.user %>
                 <%= link_to("编辑", edit_task_path(task)) %>
                 |
                 <%= link_to("删除", task_path(task), :method => :delete, :data => {:confirm => "你确定吗？"}) %>
@@ -52,6 +65,9 @@
                  <% else %>
                    <%= link_to("保留", hide_admin_task_path(task), :method => :post,  :class => "btn btn-xs btn-default") %>
                  <% end %>
+              <% else %>
+              -
+              <% end %>
             </td>
             <td>
               <%= link_to(task.concerned_members.count, admin_task_resumes_path(task)) %>

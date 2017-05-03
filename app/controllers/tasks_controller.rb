@@ -31,7 +31,6 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
 
   def create
     @task = Task.new(task_params)
-
     if @task.save
       current_user.join!(@task)
       redirect_to tasks_path
@@ -83,6 +82,6 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :hope_dead_line, :commit_wage, :contact_email, :is_hidden, )
+    params.require(:task).permit(:title, :description, :hope_dead_line, :commit_wage, :contact_email, :is_hidden )
   end
 end

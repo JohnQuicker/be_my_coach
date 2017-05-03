@@ -10,7 +10,8 @@ class Task < ApplicationRecord
   belongs_to :user
   has_many :resumes
   has_many :task_relationships
+  has_many :resume_relationships
   has_many :concerned_members, through: :task_relationships, source: :user
-  has_many :resumed_members, through: :task_relationships, source: :user
+  has_many :resumed_members, through: :resume_relationships, source: :user
 
 end

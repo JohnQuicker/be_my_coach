@@ -1,6 +1,6 @@
 <div class="col-md-12">
 
-  <div class="dropdown clearfix pull-right">
+  <div class="dropdown clearfix pull-right" style="margin: 24px 4px">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       排序
         <span class="caret"></span>
@@ -17,7 +17,7 @@
       </li>
     </ul>
   </div>
-  <div class="pull-right">
+  <div class="pull-right" style="margin: 24px 4px">
     <%= link_to("加入一项任务", new_task_path, :class => "btn btn-default")%>
   </div>
 
@@ -44,6 +44,13 @@
             <td>
               <%= render_task_status(task) %>
               <%= link_to(task.title, task_path(task)) %>
+              <span class = "pull-right" style="margin: 2px 4px 0px 4px;">
+              <% if current_user && current_user.have_resumed_for?(task) %>
+                <label class = "label label-success" style="padding-bottom: 5px;"> 联系过了 </label>
+              <% else %>
+                <label class = "label label-warning"> 未尝联系 </label>
+              <% end %>
+              </span>
             </td>
             <td>
                 <%= link_to("编辑", edit_task_path(task)) %>

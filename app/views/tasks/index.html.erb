@@ -67,9 +67,9 @@
             <label class = "label label-warning"> 未关注它 </label>
           <% end %>
           <% if current_user && current_user.have_resumed_for?(task) %>
-            <label class = "label label-success" style="padding-bottom: 5px;"> 已经联系 </label>
+            <label class = "label label-success" style="padding-bottom: 5px;"> 联系过了 </label>
           <% else %>
-            <label class = "label label-warning"> 尚未联系 </label>
+            <label class = "label label-warning"> 未尝联系 </label>
           <% end %>
           </span>
         </td>

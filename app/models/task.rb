@@ -10,4 +10,5 @@ class Task < ApplicationRecord
   has_many :resumes
   has_many :task_relationships
   has_many :members, through: :task_relationships, source: :user
+  belongs_to :user
 end

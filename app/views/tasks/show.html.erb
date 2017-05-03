@@ -1,10 +1,54 @@
-<h1> <%= @task.title %></h1>
-
-<p>
-<%= simple_format(@task.description)  %>
-</p>
-
-
+<div class="col-md-12">
+  <div class="group" >
+    <span class = "pull-right" style="margin: 24px 4px 0px 4px;">
+      <% if current_user && current_user.be_concerned_about?(@task) %>
+        <label class = "label label-success" style="padding-bottom: 5px;"> 已经关注 </label>
+        <%= link_to("不再关注", quit_task_path(@task), method: :post, class: "btn btn-default") %>
+      <% else %>
+        <label class = "label label-warning"> 未关注它 </label>
+        <%= link_to("我要关注", join_task_path(@task), method: :post, class: "btn btn-default") %>
+      <% end %>
+    </span>
+    <span class = "pull-right" style="margin: 24px 0px 0px 4px;">
+      <%= link_to("援手留言", new_task_resume_path(@task), class: "btn btn-default pull-right") %>
+      <% if current_user && current_user == @task.user %>
+        <%= link_to("修改", edit_task_path(@task), class: "btn btn-primary pull-right") %>
+      <% end %>
+    </span>
+  </div>
+  <div class="panel panel-info" style="margin-top: 20px;">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      <%= @task.title %>
+    </div>
+    <div class="panel-body">
+      <div class="panel panel-info">
+        <div class="panel-heading">课题内容</div>
+        <div class="panel-body">
+          <p> <%= simple_format(@task.description) %> </p>
+        </div>
+      </div>
+      <div class="panel panel-info">
+        <div class="panel-heading">希望期限</div>
+        <div class="panel-body">
+          <p> <%= @task.hope_dead_line %> </p>
+        </div>
+      </div>
+      <div class="panel panel-info">
+        <div class="panel-heading">承诺礼金</div>
+        <div class="panel-body">
+          <p> <%= @task.commit_wage %> </p>
+        </div>
+      </div>
+      <div class="panel panel-info">
+        <div class="panel-heading">联系方式</div>
+        <div class="panel-body">
+          <p> <%= @task.contact_email %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="text-center">
-  <%= link_to("伸出援手", new_task_resume_path(@task), :style => "font-size: 30px; text-decoration: underline;")  %>
+  <%= link_to("援手留言", new_task_resume_path(@task), :style => "font-size: 30px; text-decoration: underline;")  %>
+</div>
 </div>

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, ]
+before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :join, :quit]
 
   # def index
   #   @tasks = Task.where(:is_hidden => false)
@@ -33,6 +33,7 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
     @task = Task.new(task_params)
 
     if @task.save
+      current_user.join!(@task)
       redirect_to tasks_path
     else
       render :new
@@ -56,6 +57,27 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
     @task = Task.find(params[:id])
     @task.destroy
     redirect_to admin_tasks_path
+  end
+
+  def join
+    @task = Task.find(params[:id])
+    if !current_user.be_concerned_about?(@task)
+      current_user.join!(@task)
+      flash[:notice] = "关注本课题成功"
+    else
+      flash[:warning] = "你已经关注这个课题了"
+    end
+    redirect_to task_path(@task)
+  end
+  def quit
+    @task = Task.find(params[:id])
+    if current_user.be_concerned_about?(@task)
+      current_user.quit!(@task)
+      flash[:alert] = "已经取消关注"
+    else
+      flash[:warning] = "你已经没有关注这个课题了"
+    end
+    redirect_to task_path(@task)
   end
 
   private

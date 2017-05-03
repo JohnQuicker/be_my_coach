@@ -5,7 +5,7 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
   # def index
   #   @tasks = Task.where(:is_hidden => false)
   # end
-  # 
+  #
   def index
     @tasks = case params[:order]
       when 'by_hope_dead_line'
@@ -33,7 +33,7 @@ before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destro
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to admin_tasks_path
+      redirect_to tasks_path
     else
       render :new
     end

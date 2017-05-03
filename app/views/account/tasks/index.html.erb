@@ -53,6 +53,7 @@
               </span>
             </td>
             <td>
+              <% if current_user && current_user==task.user %>
                 <%= link_to("编辑", edit_task_path(task)) %>
                 |
                 <%= link_to("删除", task_path(task), :method => :delete, :data => {:confirm => "你确定吗？"}) %>
@@ -61,6 +62,9 @@
                  <% else %>
                    <%= link_to("保留", hide_admin_task_path(task), :method => :post,  :class => "btn btn-xs btn-default") %>
                  <% end %>
+              <% else %>
+              -
+              <% end %>
             </td>
             <td>
               <%= link_to(task.concerned_members.count, admin_task_resumes_path(task)) %>

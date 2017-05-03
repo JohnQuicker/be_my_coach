@@ -1,7 +1,7 @@
 class Admin::TasksController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :publish, :hide]
   before_action :require_is_admin
-  layout "admin"
+  # layout "admin"
     def index
       @tasks = case params[:order]
         when 'by_hope_dead_line'

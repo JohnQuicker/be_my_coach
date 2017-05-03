@@ -1,4 +1,4 @@
-<div class="dropdown clearfix pull-right">
+<div class="dropdown clearfix pull-right" style="margin: 24px 4px">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     排序
       <span class="caret"></span>
@@ -15,13 +15,15 @@
     </li>
   </ul>
 </div>
-<div class="pull-right">
+<div class="pull-right" style="margin: 24px 4px">
   <%= link_to("加入一项任务", new_task_path, :class => "btn btn-default")%>
 </div>
 
 <div class="panel panel-info" style="margin-top: 20px;">
     <!-- Default panel contents -->
-    <div class="panel-heading">所有课题</div>
+    <div class="panel-heading">
+      所有课题
+    </div>
     <div class="panel-body">
       <table class="table table-bordered">
         <thead>

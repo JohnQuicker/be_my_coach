@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :resumes
   end
-  root 'tasks#index'
+  root 'welcome#index'
   namespace :admin do
     resources :tasks do
       member do

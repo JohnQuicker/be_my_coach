@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Be My Coach</title>
+    <title>Be My Coach 您教教我</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="shortcut icon" href="/images/favicon.ico">
   </head>
 
   <body>
     <!-- 用container-fluid风格装饰题头和主体 -->
-    <div class="container-fluid">
-      <%= render "common/navbar" %>
-      <%= render "common/flashes" %>
-      <%= yield %>
+      <div class="footer_up">
+        <div class="container-fluid">
+          <div class="row">
+           <%= render "common/navbar" %>
+          </div>
+          <%= render "common/flashes" %>
+          <%= yield %>
+      </div>
     </div>
     <!-- 不用container-fluid风格装饰地脚，什么也不用 -->
     <%= render "common/footer" %>

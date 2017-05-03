@@ -6,10 +6,12 @@ class User < ApplicationRecord
  def admin?
    is_admin
  end
- has_many :resumes
  has_many :tasks
+ has_many :resumes
  has_many :task_relationships
  has_many :participated_tasks, :through => :task_relationships, :source => :task
+ has_many :created_tasks, :through => :task_relationships, :source => :task
+ has_many :resumed_tasks, :through => :task_relationships, :source => :task
  def be_concerned_about?(task)
    participated_tasks.include?(task)
  end

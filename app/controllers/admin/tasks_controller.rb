@@ -21,6 +21,7 @@ class Admin::TasksController < ApplicationController
     def create
       @task = Task.new(task_params)
       if @task.save
+        current_user.join!(@task)
         redirect_to tasks_path
       else
         render :new

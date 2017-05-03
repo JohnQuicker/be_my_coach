@@ -18,35 +18,45 @@
 <div class="pull-right">
   <%= link_to("添加一个课题", new_task_path, :class => "btn btn-default")%>
 </div>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <td>名称</td>
-      <td>描述</td>
-      <td>时限</td>
-      <td>分成</td>
-      <td>联系</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-    <tr>
-      <td>
-        <%= link_to(task.title, task_path(task)) %>
-      </td>
-      <td>
-        <%= task.description %>
-      </td>
-      <td>
-        <%= task.hope_dead_line %>
-      </td>
-      <td>
-        <%= task.commit_wage %>
-      </td>
-      <td>
-        <%= task.contact_email %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+
+
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading">课题列表</div>
+  <div class="panel-body">
+    <p>这里是发布过的所有课题</p>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <td>课题名称</td>
+        <td>问题描述</td>
+        <td>期望时限(天)</td>
+        <td>承诺礼金(RMB)</td>
+        <td>发布时间</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+      <tr>
+        <td>
+          <%= link_to(task.title, task_path(task)) %>
+        </td>
+        <td>
+          <%= task.description %>
+        </td>
+        <td>
+          <%= task.hope_dead_line %>
+        </td>
+        <td>
+          <%= task.commit_wage %>
+        </td>
+        <td>
+          <%= task.created_at %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+</div>

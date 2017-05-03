@@ -8,4 +8,6 @@ class Task < ApplicationRecord
   scope :published, -> { where(is_hidden: false) }
   scope :recent, -> { order('created_at DESC') }
   has_many :resumes
+  has_many :task_relationships
+  has_many :members, through: :task_relationships, source: :user
 end

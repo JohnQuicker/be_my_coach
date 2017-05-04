@@ -1,24 +1,79 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+版本演进
 
-Things you may want to cover:
+第一版目标-5月3日12:00
 
-* Ruby version
+1. 进站首页
+   1. 欢迎大图简洁明快。OK
+   2. 图上文字字体颜色与图配合。OK
+2. 地脚
+   1. 地脚固定在底端。OK
+   2. 文字丰满。OK
+3. 课题内容
+   1. 排版简洁清晰。OK
+   2. 套用简单模版，整体风格协调。OK
+4. 课题清单
+   1. 有排序功能。OK
+   2. 有筛选功能。OK@v1
+   3. 有分页功能。Not need
+5. 教练可以关注和忽略课题
+   1. 如题。OK
+6. 登录与注册
+   1. 登录可以转注册，注册可以转登录。No need
+   2. 可以用用户名登录。No need.
+7. 我发表的课题
+   1. 不是看所有课题，而是只能见到自己发表的课题。OK
+8. 我关心的课题
+   1. 教练可以选择我关心的课题，清单展示页都显示课题的哪些栏位。No need.
+   2. 投递过帮助信息的课题，有特殊标记。OK
+9. github
+   1. 发布。——新建课题不能了！为什么？因为task的user_id栏位没有加入。也因为在create动作中，没有把user赋值给task.user.OK
+   2. 写readme。Not need.
+10. heroku
+    1. 直接上传，试建数据库。OK
 
-* System dependencies
 
-* Configuration
+以上，2017-05-02-TUS12:56记
 
-* Database creation
 
-* Database initialization
+---
 
-* How to run the test suite
+第二版 目标5月5日12:00
 
-* Services (job queues, cache servers, search engines, etc.)
+1. 我们的优势
+   1. 文案，优势在哪里（吹牛）。
+   2. 实现锤子手机那样的自动悬停。或者降低一点要求，Typora那样的分割线。
+2. 导航条
+   1. 做到真导航，有到各个子模块的快捷通道。
+3. 课题展示
+   1. 内容用缩略图展示。
+   2. 移动端看起来也要舒服。
+   3. 发表时间本地化。
+4. 课题内容
+   1. 学生新建任务时，能够得到系统提示，填写哪些栏位，有两三个举例。
+   2. 如果学生在线填写，保证定期自动保存，以免浪费功夫。
+5. 课题清单
+   1. 有分页功能。
+   2. 有搜索功能。
+6. 我关心的课题
+   1. 正在指导中的课题有更新信息，得到系统通知。
+7. 我发表的课题
+   1. 课题指导状态展示页，可以筛选。
+   2. 课题指导状态展示页，可以点进去单独展示。
+8. 我的联系记录
+   1. 邮件列表。（系统得到抄送的情况下）
+   2. 统计信息：邮件数量，回复比例，反应时间。
+9. github
+   1. 写readme。
+   2. fork下来，更新，做pull request。OK@v2-05/14-19:21
+   3. 学会审查新旧区别，做merge。OK@v2-05/14-16:40
+10. heroku
+    1. 写seed档，导入测试数据库。
+    2. 如何将github的更新，推送到heroku?
 
-* Deployment instructions
+以上，2017-05-04-THU15:42记于上海图书馆
 
-* ...
+---
+
+
